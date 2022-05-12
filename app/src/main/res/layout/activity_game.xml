@@ -3,68 +3,444 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fadingEdge="none">
 
     <ImageView
         android:id="@+id/background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="-225dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="961dp"
+        android:layout_height="412dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/background" />
+        tools:srcCompat="@drawable/background" />
 
     <ImageView
-        android:id="@+id/plant_slot_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:srcCompat="@drawable/peashooter"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="66dp" />
+        android:id="@+id/plantSlot41"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="628dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
-        android:id="@+id/plant_slot_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:srcCompat="@drawable/peashooter"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="132dp" />
+        android:id="@+id/plantSlot43"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="628dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
-        android:id="@+id/plant_slot_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:srcCompat="@drawable/peashooter"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="204dp" />
+        android:id="@+id/plantSlot44"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="628dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
-        android:id="@+id/plant_slot_4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:srcCompat="@drawable/peashooter"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="269dp" />
+        android:id="@+id/plantSlot45"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="628dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
-        android:id="@+id/plant_slot_5"
+        android:id="@+id/plantSlot42"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="628dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot36"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="572dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot38"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="572dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot39"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="572dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot40"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="572dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot37"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="572dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot31"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="516dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot33"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="516dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot34"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="516dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot35"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="516dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot32"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="516dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot26"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="460dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot28"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="460dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot29"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="460dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot30"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="460dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot27"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="460dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot21"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot23"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot24"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot25"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot22"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="404dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot16"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot18"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot19"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot20"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot17"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="348dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot11"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot13"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot14"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot15"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot12"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot6"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot10"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="328dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot8"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="188dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot9"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot7"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="236dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot1"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="60dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot3"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="190dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot4"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="260dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/plantSlot5"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="330dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <TextView
+        android:id="@+id/sunDisplayValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="1.5"
-        android:scaleY="1.5"
-        app:srcCompat="@drawable/peashooter"
-        tools:layout_editor_absoluteX="188dp"
-        tools:layout_editor_absoluteY="336dp" />
+        android:layout_marginStart="748dp"
+        android:layout_marginTop="4dp"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#FFE500"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/sunDisplayValueIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="696dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background"
+        app:srcCompat="@drawable/sun" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
