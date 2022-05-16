@@ -419,28 +419,55 @@
         app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toTopOf="@+id/background" />
 
+    <ImageView
+        android:id="@+id/sunDisplayValueIcon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toStartOf="@+id/sunDisplayValue"
+        app:layout_constraintTop_toTopOf="@+id/sunDisplayValue"
+        app:srcCompat="@drawable/sun" />
+
     <TextView
         android:id="@+id/sunDisplayValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="748dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="50dp"
         android:text="0"
         android:textAlignment="center"
         android:textColor="#FFE500"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/background" />
 
-    <ImageView
-        android:id="@+id/sunDisplayValueIcon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="696dp"
-        android:layout_marginTop="4dp"
+    <Button
+        android:id="@+id/purchaseSunflowerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sunflower (100)"
+        app:layout_constraintStart_toStartOf="@+id/shopLabel"
+        app:layout_constraintTop_toBottomOf="@+id/shopLabel" />
+
+    <Button
+        android:id="@+id/purchasePeashooterButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Peashooter (200)"
+        app:layout_constraintStart_toStartOf="@+id/purchaseSunflowerButton"
+        app:layout_constraintTop_toBottomOf="@+id/purchaseSunflowerButton" />
+
+    <TextView
+        android:id="@+id/shopLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Shop"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/background"
-        app:layout_constraintTop_toTopOf="@+id/background"
-        app:srcCompat="@drawable/sun" />
+        app:layout_constraintTop_toTopOf="@+id/background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,15 @@
 package com.example.plants
 
-class SunflowerPlant {
+import android.widget.ImageView
+
+class SunflowerPlant(var imageView: ImageView) {
     var SUN_VALUE = 25
     var sunCounter = 0
     var shootCounter = 0
+
+    init {
+        imageView.setImageResource(R.drawable.sunflower)
+    }
 
     fun update(time : Int) {
         sunCounter += time
