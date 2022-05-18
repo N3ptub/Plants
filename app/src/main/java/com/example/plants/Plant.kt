@@ -5,14 +5,14 @@ import android.widget.ImageView
 class Plant(var plantID: Int, var imageView: ImageView, var posX: Int, var posY: Int) {
 
     var sunflower: SunflowerPlant? = null
-    var peashooter: SunflowerPlant? = null
+    var peashooter: PeashooterPlant? = null
 
     init {
         if (plantID == 1) {
             sunflower = SunflowerPlant(imageView)
         }
         else if (plantID == 2) {
-            peashooter = SunflowerPlant(imageView)
+            peashooter = PeashooterPlant(imageView)
         }
     }
 

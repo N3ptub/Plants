@@ -1,15 +1,15 @@
 package com.example.plants
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.provider.SyncStateContract.Helpers.update
-import android.widget.Button
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import com.example.plants.databinding.ActivityGameBinding
-import com.example.plants.databinding.ActivityMainBinding
 import kotlin.properties.Delegates
+
 
 class GameActivity : AppCompatActivity() {
     companion object{
@@ -20,6 +20,7 @@ class GameActivity : AppCompatActivity() {
         sun = 100
     }
     private lateinit var binding: ActivityGameBinding
+    private lateinit var rocketAnimation: AnimationDrawable
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,14 +40,15 @@ class GameActivity : AppCompatActivity() {
         var row5 = arrayOf(binding.plantSlot5, binding.plantSlot10, binding.plantSlot15, binding.plantSlot20, binding.plantSlot25, binding.plantSlot30, binding.plantSlot35, binding.plantSlot40, binding.plantSlot45)
         var plantSlots = arrayOf(row1, row2, row3, row4, row5)
 
-        var background = binding.background
-        background.setImageResource(R.drawable.background)
+        var backgrounds = binding.background
+        backgrounds.setImageResource(R.drawable.background)
 
         var purchaseSunflowerButton = binding.purchaseSunflowerButton
         var purchasePeashooterButton = binding.purchasePeashooterButton
 
         purchaseSunflowerButton.setOnClickListener {
             purchasePlantSelected = 1
+            //purchaseSunflowerButton.setTextColor(Color.rgb(200, 150, 150))
         }
 
         purchasePeashooterButton.setOnClickListener {
