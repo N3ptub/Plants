@@ -12,7 +12,7 @@ import kotlin.properties.Delegates
 
 
 class GameActivity : AppCompatActivity() {
-    companion object{
+    companion object {
         var sun by Delegates.notNull<Int>()
     }
 
@@ -20,8 +20,6 @@ class GameActivity : AppCompatActivity() {
         sun = 100
     }
     private lateinit var binding: ActivityGameBinding
-    private lateinit var rocketAnimation: AnimationDrawable
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +46,6 @@ class GameActivity : AppCompatActivity() {
 
         purchaseSunflowerButton.setOnClickListener {
             purchasePlantSelected = 1
-            //purchaseSunflowerButton.setTextColor(Color.rgb(200, 150, 150))
         }
 
         purchasePeashooterButton.setOnClickListener {
@@ -67,8 +64,8 @@ class GameActivity : AppCompatActivity() {
                     }
                 }
                 if (temp) {
-                    if ((purchasePlantSelected == 1) && (sun >= 100)) {
-                        sun -= 100
+                    if ((purchasePlantSelected == 1) && (sun >= 50)) {
+                        sun -= 50
                         var newPlant = Plant(purchasePlantSelected, plant, posX, posY)
                         plants.add(newPlant)
                     }
