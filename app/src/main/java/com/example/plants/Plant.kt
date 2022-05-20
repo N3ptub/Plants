@@ -2,7 +2,7 @@ package com.example.plants
 
 import android.widget.ImageView
 
-class Plant(var plantID: Int, var imageView: ImageView, var posX: Int, var posY: Int) {
+class Plant(var plantID: Int, var imageView: ImageView) {
 
     var sunflower: SunflowerPlant? = null
     var peashooter: PeashooterPlant? = null

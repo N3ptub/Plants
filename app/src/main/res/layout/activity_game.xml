@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/GameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fadingEdge="none">
@@ -420,6 +421,51 @@
         app:layout_constraintTop_toTopOf="@+id/background" />
 
     <ImageView
+        android:id="@+id/zombieSpawner1"
+        android:layout_width="59dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="712dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/zombieSpawner2"
+        android:layout_width="59dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="712dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/zombieSpawner3"
+        android:layout_width="59dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="712dp"
+        android:layout_marginTop="144dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/zombieSpawner4"
+        android:layout_width="59dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="712dp"
+        android:layout_marginTop="216dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
+        android:id="@+id/zombieSpawner5"
+        android:layout_width="59dp"
+        android:layout_height="92dp"
+        android:layout_marginStart="712dp"
+        android:layout_marginTop="284dp"
+        app:layout_constraintStart_toStartOf="@+id/background"
+        app:layout_constraintTop_toTopOf="@+id/background" />
+
+    <ImageView
         android:id="@+id/sunDisplayValueIcon"
         android:layout_width="50dp"
         android:layout_height="50dp"
@@ -452,7 +498,7 @@
         android:id="@+id/purchasePeashooterButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Peashooter (200)"
+        android:text="Peashooter (100)"
         app:layout_constraintStart_toStartOf="@+id/purchaseSunflowerButton"
         app:layout_constraintTop_toBottomOf="@+id/purchaseSunflowerButton" />
 

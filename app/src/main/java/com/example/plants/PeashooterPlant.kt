@@ -4,6 +4,7 @@ import android.widget.ImageView
 
 class PeashooterPlant(var imageView: ImageView) {
     var counter = 0
+    var health = 100
     var playingShootAnimation = false
     var playingIdleAnimation = true
     var animationShootCounter = 0
