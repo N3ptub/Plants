@@ -5,7 +5,6 @@ import android.widget.ImageView
 class SunflowerPlant(var imageView: ImageView) {
     var SUN_VALUE = 25
     var counter = 0
-    var health = 100
     var playingDropSunAnimation = false
     var playingIdleAnimation = true
     var animationDropSunCounter = 0

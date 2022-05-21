@@ -19,7 +19,7 @@ class GameActivity : AppCompatActivity() {
     }
 
     init {
-        sun = 50
+        sun = 5000
     }
     private lateinit var binding: ActivityGameBinding
 
@@ -28,26 +28,26 @@ class GameActivity : AppCompatActivity() {
         binding = ActivityGameBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var sunDisplayValue = binding.sunDisplayValue
+        val sunDisplayValue = binding.sunDisplayValue
         sunDisplayValue.text = sun.toString()
 
         var purchasePlantSelected = 0
         var gameCounter = 0
 
-        var row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
-        var row2 = arrayOf(binding.plantSlot2, binding.plantSlot7, binding.plantSlot12, binding.plantSlot17, binding.plantSlot22, binding.plantSlot27, binding.plantSlot32, binding.plantSlot37, binding.plantSlot42)
-        var row3 = arrayOf(binding.plantSlot3, binding.plantSlot8, binding.plantSlot13, binding.plantSlot18, binding.plantSlot23, binding.plantSlot28, binding.plantSlot33, binding.plantSlot38, binding.plantSlot43)
-        var row4 = arrayOf(binding.plantSlot4, binding.plantSlot9, binding.plantSlot14, binding.plantSlot19, binding.plantSlot24, binding.plantSlot29, binding.plantSlot34, binding.plantSlot39, binding.plantSlot44)
-        var row5 = arrayOf(binding.plantSlot5, binding.plantSlot10, binding.plantSlot15, binding.plantSlot20, binding.plantSlot25, binding.plantSlot30, binding.plantSlot35, binding.plantSlot40, binding.plantSlot45)
-        var plantSlots = arrayOf(row1, row2, row3, row4, row5)
+        val row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
+        val row2 = arrayOf(binding.plantSlot2, binding.plantSlot7, binding.plantSlot12, binding.plantSlot17, binding.plantSlot22, binding.plantSlot27, binding.plantSlot32, binding.plantSlot37, binding.plantSlot42)
+        val row3 = arrayOf(binding.plantSlot3, binding.plantSlot8, binding.plantSlot13, binding.plantSlot18, binding.plantSlot23, binding.plantSlot28, binding.plantSlot33, binding.plantSlot38, binding.plantSlot43)
+        val row4 = arrayOf(binding.plantSlot4, binding.plantSlot9, binding.plantSlot14, binding.plantSlot19, binding.plantSlot24, binding.plantSlot29, binding.plantSlot34, binding.plantSlot39, binding.plantSlot44)
+        val row5 = arrayOf(binding.plantSlot5, binding.plantSlot10, binding.plantSlot15, binding.plantSlot20, binding.plantSlot25, binding.plantSlot30, binding.plantSlot35, binding.plantSlot40, binding.plantSlot45)
+        val plantSlots = arrayOf(row1, row2, row3, row4, row5)
 
         var zombieSpawners = arrayOf(binding.zombieSpawner1, binding.zombieSpawner2, binding.zombieSpawner3, binding.zombieSpawner4, binding.zombieSpawner5)
 
-        var backgrounds = binding.background
+        val backgrounds = binding.background
         backgrounds.setImageResource(R.drawable.background)
 
-        var purchaseSunflowerButton = binding.purchaseSunflowerButton
-        var purchasePeashooterButton = binding.purchasePeashooterButton
+        val purchaseSunflowerButton = binding.purchaseSunflowerButton
+        val purchasePeashooterButton = binding.purchasePeashooterButton
 
         purchaseSunflowerButton.setOnClickListener {
             purchasePlantSelected = 1
@@ -57,27 +57,27 @@ class GameActivity : AppCompatActivity() {
             purchasePlantSelected = 2
         }
 
-        var plants = mutableListOf<Plant>()
-        var zombies = mutableListOf<Zombie>()
+        val plants = mutableListOf<Plant>()
+        val zombies = mutableListOf<Zombie>()
 
-        fun clicked(plant: ImageView) {
+        fun clicked(plant: ImageView, lane: Int) {
             if (purchasePlantSelected != 0) {
-                var temp = true
+                var duplicate = true
                 for (i in plants) {
                     if (i.imageView == plant) {
-                        temp = false
+                        duplicate = false
                         break
                     }
                 }
-                if (temp) {
+                if (duplicate) {
                     if ((purchasePlantSelected == 1) && (sun >= 50)) {
                         sun -= 50
-                        var newPlant = Plant(purchasePlantSelected, plant)
+                        val newPlant = Plant(purchasePlantSelected, plant, (lane + 1))
                         plants.add(newPlant)
                     }
                     else if ((purchasePlantSelected == 2) && (sun >= 100)) {
                         sun -= 100
-                        var newPlant = Plant(purchasePlantSelected, plant)
+                        val newPlant = Plant(purchasePlantSelected, plant, (lane + 1))
                         plants.add(newPlant)
                     }
                     purchasePlantSelected = 0
@@ -88,7 +88,7 @@ class GameActivity : AppCompatActivity() {
         for (i in 0..4) {
             for (j in 0..8) {
                 plantSlots[i][j].setOnClickListener {
-                    clicked(plantSlots[i][j])
+                    clicked(plantSlots[i][j], i)
                 }
             }
         }
@@ -116,7 +116,7 @@ class GameActivity : AppCompatActivity() {
 
                 binding.GameLayout.addView(imageView)
 
-                var newZombie = Zombie(imageView)
+                val newZombie = Zombie(imageView, lane)
                 zombies.add(newZombie)
             }
         }
@@ -128,17 +128,20 @@ class GameActivity : AppCompatActivity() {
 
         fun checkCollisions() {
             for (plant in plants) {
+                //Log.d("GameActivity", "Top Left Plant Position: ${plant.imageView.x} and ${plant.imageView.y}")
                 for (zombie in zombies) {
-                    if ((zombie.imageView.x <= plant.imageView.x + 100) && (zombie.imageView.x >= plant.imageView.x - 100)) {
-                        if ((zombie.imageView.y <= plant.imageView.y + 100) && (zombie.imageView.y >= plant.imageView.y - 100)) {
-                            zombie.eat()
+                    if (zombie.lane == plant.lane) {
+                        if ((zombie.imageView.x <= plant.imageView.x + 100) && (zombie.imageView.x >= plant.imageView.x - 100)) {
+                            if (!zombie.isEating) {
+                                if (plant.health > 0) {
+                                   zombie.eat(plant)
+                                }
+                                else {
+                                    plant.imageView.setImageResource(android.R.color.transparent)
+                                    plants.remove(plant)
+                                }
+                            }
                         }
-                        else {
-                            zombie.isEating = false
-                        }
-                    }
-                    else {
-                        zombie.isEating = false
                     }
                 }
             }
@@ -148,9 +151,8 @@ class GameActivity : AppCompatActivity() {
 
             update(40)
 
-            if (gameCounter == 50) { // multiply this by 10
+            if (gameCounter%50 == 0) { // multiply this by 10
                 addZombie((1..5).random())
-                //Log.d("GameActivity", "Top Left Plant Position: ${plantSlots[0][0].x} and ${plantSlots[0][0].y}")
             }
 
             if (gameCounter%10 == 0) {
