@@ -3,10 +3,10 @@ package com.example.plants
 import android.util.Log
 import android.widget.ImageView
 
-class Zombie(var imageView: ImageView, var lane: Int) {
+class Zombie(var imageView: ImageView, var lane: Int, var priority: Int) {
     var counter = 0
     var health = 100
-    var speed = (-5..5).random().toFloat()
+    //var speed = (-5..5).random().toFloat()
     var isEating = false
     var target: Plant? = null
 
@@ -42,6 +42,6 @@ class Zombie(var imageView: ImageView, var lane: Int) {
     }
 
     fun move() {
-        imageView.translationX -= (5.2f + (speed/10f))
+        imageView.translationX -= (5.2f) //+ (speed/10f))
     }
 }

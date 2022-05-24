@@ -16,6 +16,7 @@ import kotlin.properties.Delegates
 class GameActivity : AppCompatActivity() {
     companion object {
         var sun by Delegates.notNull<Int>()
+        var projectiles = mutableListOf<Projectile>()
     }
 
     init {
@@ -33,6 +34,7 @@ class GameActivity : AppCompatActivity() {
 
         var purchasePlantSelected = 0
         var gameCounter = 0
+        var zombieCounter = 0
 
         val row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
         val row2 = arrayOf(binding.plantSlot2, binding.plantSlot7, binding.plantSlot12, binding.plantSlot17, binding.plantSlot22, binding.plantSlot27, binding.plantSlot32, binding.plantSlot37, binding.plantSlot42)
@@ -57,7 +59,7 @@ class GameActivity : AppCompatActivity() {
             purchasePlantSelected = 2
         }
 
-        val plants = mutableListOf<Plant>()
+        var plants = mutableListOf<Plant>()
         val zombies = mutableListOf<Zombie>()
 
         fun clicked(plant: ImageView, lane: Int) {
@@ -94,11 +96,11 @@ class GameActivity : AppCompatActivity() {
         }
 
         fun update(time: Int) {
-            for (i in plants) {
-                i.update(time)
+            for (plant in plants) {
+                plant.update(time)
             }
-            for (i in zombies) {
-                i.update(time)
+            for (zombie in zombies) {
+                zombie.update(time)
             }
             sunDisplayValue.text = sun.toString()
             gameCounter += 1
@@ -111,20 +113,15 @@ class GameActivity : AppCompatActivity() {
                 imageView.translationX = (2700 + (-25..25).random()).toFloat()
                 imageView.translationY = (((lane - 1) * 250) + 50 + (-15..15).random()).toFloat()
 
-                val imgResId = R.drawable.zombie
-                imageView.setImageResource(imgResId)
+                imageView.setImageResource(R.drawable.zombie)
 
                 binding.GameLayout.addView(imageView)
 
-                val newZombie = Zombie(imageView, lane)
+                zombieCounter += 1
+                val newZombie = Zombie(imageView, lane, zombieCounter)
                 zombies.add(newZombie)
             }
         }
-        //addZombie(1)
-        //addZombie(2)
-        //addZombie(3)
-        //addZombie(4)
-        //addZombie(5)
 
         fun checkCollisions() {
             for (plant in plants) {
@@ -138,7 +135,7 @@ class GameActivity : AppCompatActivity() {
                                 }
                                 else {
                                     plant.imageView.setImageResource(android.R.color.transparent)
-                                    plants.remove(plant)
+                                    plants = plants.filter { (it != plant)} as MutableList<Plant>
                                 }
                             }
                         }

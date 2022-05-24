@@ -29,6 +29,8 @@ class PeashooterPlant(var imageView: ImageView) {
     fun shoot() {
         playingShootAnimation = true
         playingIdleAnimation = false
+        var projectile = Projectile(1)
+        GameActivity.projectiles.add(projectile)
     }
 
     fun animate() {
