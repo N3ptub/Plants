@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.SyncStateContract.Helpers.update
+import android.text.TextUtils.indexOf
 import android.util.Log
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -13,7 +14,7 @@ import com.example.plants.databinding.ActivityGameBinding
 import kotlin.properties.Delegates
 
 
-class GameActivity : AppCompatActivity() {
+open class GameActivity : AppCompatActivity() {
     companion object {
         var sun by Delegates.notNull<Int>()
         var projectiles = mutableListOf<Projectile>()
@@ -22,7 +23,7 @@ class GameActivity : AppCompatActivity() {
     init {
         sun = 5000
     }
-    private lateinit var binding: ActivityGameBinding
+    lateinit var binding: ActivityGameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +36,7 @@ class GameActivity : AppCompatActivity() {
         var purchasePlantSelected = 0
         var gameCounter = 0
         var zombieCounter = 0
+        var previousProjectile = Projectile(0)
 
         val row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
         val row2 = arrayOf(binding.plantSlot2, binding.plantSlot7, binding.plantSlot12, binding.plantSlot17, binding.plantSlot22, binding.plantSlot27, binding.plantSlot32, binding.plantSlot37, binding.plantSlot42)
@@ -95,6 +97,19 @@ class GameActivity : AppCompatActivity() {
             }
         }
 
+        fun addProjectile(projectile: Projectile) {
+            Log.d("GameActivity", "ADDED PROJECTILE")
+            val imageView = ImageView(this)
+            imageView.layoutParams = LinearLayout.LayoutParams(50, 50)
+            imageView.translationX = 2000f
+            imageView.translationY = ((1..5).random() * 250f) + 50f
+
+            imageView.setImageResource(R.drawable.sun)
+
+            binding.GameLayout.addView(imageView)
+            projectile.imageView = imageView
+        }
+
         fun update(time: Int) {
             for (plant in plants) {
                 plant.update(time)
@@ -104,6 +119,15 @@ class GameActivity : AppCompatActivity() {
             }
             sunDisplayValue.text = sun.toString()
             gameCounter += 1
+
+            if (projectiles.indexOf(previousProjectile) != projectiles.lastIndex) {
+                if (projectiles.indexOf(previousProjectile) != -1) {
+                    for (index in projectiles.indexOf(previousProjectile)..(projectiles.lastIndex-1)) {
+                        addProjectile(projectiles[index])
+                    }
+                }
+                previousProjectile = projectiles.last()
+            }
         }
 
         fun addZombie(lane : Int) {
