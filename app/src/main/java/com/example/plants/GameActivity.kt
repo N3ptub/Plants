@@ -38,6 +38,7 @@ open class GameActivity : AppCompatActivity() {
         var purchasePlantSelected = 0
         var gameCounter = 0
         var zombieCounter = 0
+        var wave = 0
         var previousProjectile = Projectile(sunDisplayValueIcon, 0, 0, 0)
 
         val row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
@@ -197,8 +198,32 @@ open class GameActivity : AppCompatActivity() {
 
             update(40)
 
-            if (gameCounter%50 == 0) { // multiply this by 10
-                addZombie((1..5).random())
+            if (gameCounter == 500) {
+                wave = 1
+            }
+
+            if (gameCounter == 2000) {
+                wave = 2
+            }
+
+            if (gameCounter == 3500) {
+                wave = 3
+            }
+
+            if (wave == 1) {
+                if (gameCounter%500 == 0) {
+                    addZombie((1..5).random())
+                }
+            }
+            if (wave == 2) {
+                if (gameCounter%250 == 0) {
+                    addZombie((1..5).random())
+                }
+            }
+            if (wave == 3) {
+                if (gameCounter%125 == 0) {
+                    addZombie((1..5).random())
+                }
             }
 
             if (gameCounter%10 == 0) {
