@@ -1,9 +1,10 @@
 package com.example.plants
 
+import android.content.Context
 import android.util.Log
 import android.widget.ImageView
 
-class PeashooterPlant(var imageView: ImageView) {
+class PeashooterPlant(var imageView: ImageView, var x: Int, var y: Int) {
     var counter = 0
     var playingShootAnimation = false
     var playingIdleAnimation = true
@@ -33,10 +34,10 @@ class PeashooterPlant(var imageView: ImageView) {
     }
 
     fun addProjectile() {
-        var projectile = Projectile(1)
+        var projectile = Projectile(imageView, 1, x, y)
         Log.d("Test", "Created proj")
         GameActivity.projectiles.add(projectile)
-        projectile.create()
+        //projectile.create()
     }
 
     fun animate() {

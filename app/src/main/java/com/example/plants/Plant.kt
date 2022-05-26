@@ -2,7 +2,7 @@ package com.example.plants
 
 import android.widget.ImageView
 
-class Plant(var plantID: Int, var imageView: ImageView, var lane: Int) {
+class Plant(var plantID: Int, var imageView: ImageView, var x: Int, var lane: Int) {
 
     var sunflower: SunflowerPlant? = null
     var peashooter: PeashooterPlant? = null
@@ -10,10 +10,10 @@ class Plant(var plantID: Int, var imageView: ImageView, var lane: Int) {
 
     init {
         if (plantID == 1) {
-            sunflower = SunflowerPlant(imageView)
+            sunflower = SunflowerPlant(imageView, x, lane)
         }
         else if (plantID == 2) {
-            peashooter = PeashooterPlant(imageView)
+            peashooter = PeashooterPlant(imageView, x, lane)
         }
     }
 

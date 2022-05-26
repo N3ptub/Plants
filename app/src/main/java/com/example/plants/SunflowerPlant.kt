@@ -2,7 +2,7 @@ package com.example.plants
 
 import android.widget.ImageView
 
-class SunflowerPlant(var imageView: ImageView) {
+class SunflowerPlant(var imageView: ImageView, var x: Int, var y: Int) {
     var SUN_VALUE = 25
     var counter = 0
     var playingDropSunAnimation = false
@@ -14,7 +14,7 @@ class SunflowerPlant(var imageView: ImageView) {
         imageView.setImageResource(R.drawable.sunflower)
     }
 
-    fun update(time : Int) {
+    fun update(time: Int) {
         counter += time
         if (counter%10000 == 0) {
             dropSun()

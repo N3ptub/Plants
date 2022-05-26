@@ -18,6 +18,7 @@ open class GameActivity : AppCompatActivity() {
     companion object {
         var sun by Delegates.notNull<Int>()
         var projectiles = mutableListOf<Projectile>()
+        var gameContext = this
     }
 
     init {
@@ -31,12 +32,13 @@ open class GameActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val sunDisplayValue = binding.sunDisplayValue
+        val sunDisplayValueIcon = binding.sunDisplayValueIcon
         sunDisplayValue.text = sun.toString()
 
         var purchasePlantSelected = 0
         var gameCounter = 0
         var zombieCounter = 0
-        var previousProjectile = Projectile(0)
+        var previousProjectile = Projectile(sunDisplayValueIcon, 0, 0, 0)
 
         val row1 = arrayOf(binding.plantSlot1, binding.plantSlot6, binding.plantSlot11, binding.plantSlot16, binding.plantSlot21, binding.plantSlot26, binding.plantSlot31, binding.plantSlot36, binding.plantSlot41)
         val row2 = arrayOf(binding.plantSlot2, binding.plantSlot7, binding.plantSlot12, binding.plantSlot17, binding.plantSlot22, binding.plantSlot27, binding.plantSlot32, binding.plantSlot37, binding.plantSlot42)
@@ -62,9 +64,9 @@ open class GameActivity : AppCompatActivity() {
         }
 
         var plants = mutableListOf<Plant>()
-        val zombies = mutableListOf<Zombie>()
+        var zombies = mutableListOf<Zombie>()
 
-        fun clicked(plant: ImageView, lane: Int) {
+        fun clicked(plant: ImageView, x: Int, lane: Int) {
             if (purchasePlantSelected != 0) {
                 var duplicate = true
                 for (i in plants) {
@@ -76,12 +78,12 @@ open class GameActivity : AppCompatActivity() {
                 if (duplicate) {
                     if ((purchasePlantSelected == 1) && (sun >= 50)) {
                         sun -= 50
-                        val newPlant = Plant(purchasePlantSelected, plant, (lane + 1))
+                        val newPlant = Plant(purchasePlantSelected, plant, x, (lane + 1))
                         plants.add(newPlant)
                     }
                     else if ((purchasePlantSelected == 2) && (sun >= 100)) {
                         sun -= 100
-                        val newPlant = Plant(purchasePlantSelected, plant, (lane + 1))
+                        val newPlant = Plant(purchasePlantSelected, plant, x, (lane + 1))
                         plants.add(newPlant)
                     }
                     purchasePlantSelected = 0
@@ -92,7 +94,7 @@ open class GameActivity : AppCompatActivity() {
         for (i in 0..4) {
             for (j in 0..8) {
                 plantSlots[i][j].setOnClickListener {
-                    clicked(plantSlots[i][j], i)
+                    clicked(plantSlots[i][j], j, i)
                 }
             }
         }
@@ -101,13 +103,14 @@ open class GameActivity : AppCompatActivity() {
             Log.d("GameActivity", "ADDED PROJECTILE")
             val imageView = ImageView(this)
             imageView.layoutParams = LinearLayout.LayoutParams(50, 50)
-            imageView.translationX = 2000f
-            imageView.translationY = ((1..5).random() * 250f) + 50f
+            imageView.translationX = (projectile.x * 200f) + 700f
+            imageView.translationY = (projectile.y * 235f) + 15f
 
             imageView.setImageResource(R.drawable.sun)
 
             binding.GameLayout.addView(imageView)
             projectile.imageView = imageView
+            projectile.imageViewChanged = true
         }
 
         fun update(time: Int) {
@@ -116,6 +119,9 @@ open class GameActivity : AppCompatActivity() {
             }
             for (zombie in zombies) {
                 zombie.update(time)
+            }
+            for (projectile in projectiles) {
+                projectile.update(time)
             }
             sunDisplayValue.text = sun.toString()
             gameCounter += 1
@@ -162,6 +168,25 @@ open class GameActivity : AppCompatActivity() {
                                     plants = plants.filter { (it != plant)} as MutableList<Plant>
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            for (projectile in projectiles) {
+                for (zombie in zombies) {
+                    if (zombie.lane == projectile.y) {
+                        if (zombie.imageView.x <= projectile.imageView.x) {
+                            projectile.imageView.setImageResource(android.R.color.transparent)
+                            projectiles = projectiles.filter { (it != projectile)} as MutableList<Projectile>
+                            zombie.health -= 10
+                            if (zombie.health <= 0) {
+                                zombie.imageView.setImageResource(android.R.color.transparent)
+                                zombies = zombies.filter { (it != zombie)} as MutableList<Zombie>
+                            }
+                        }
+                        else if (projectile.imageView.x >= 3000) {
+                            projectile.imageView.setImageResource(android.R.color.transparent)
+                            projectiles = projectiles.filter { (it != projectile)} as MutableList<Projectile>
                         }
                     }
                 }
