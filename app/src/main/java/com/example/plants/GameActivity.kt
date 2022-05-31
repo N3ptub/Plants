@@ -25,7 +25,7 @@ open class GameActivity : AppCompatActivity() {
     }
 
     init {
-        sun = 50
+        sun = 75
     }
     lateinit var binding: ActivityGameBinding
 
@@ -38,7 +38,7 @@ open class GameActivity : AppCompatActivity() {
         val sunDisplayValueIcon = binding.sunDisplayValueIcon
         val gameOverText = binding.GameOverText
         gameOverText.text = ""
-        //gameOverText.visibility = INVISIBLE
+        val waveText = binding.waveNumberText
         sunDisplayValue.text = sun.toString()
 
         var purchasePlantSelected = 0
@@ -164,7 +164,6 @@ open class GameActivity : AppCompatActivity() {
         fun checkCollisions() {
             for (zombie in zombies) {
                 if (zombie.imageView.x <= 0) {
-                    //gameOverText.visibility = VISIBLE
                     gameOverText.text = "Game Over!"
                 }
             }
@@ -182,6 +181,28 @@ open class GameActivity : AppCompatActivity() {
                                     plants = plants.filter { (it != plant)} as MutableList<Plant>
                                 }
                             }
+                        }
+                    }
+                }
+            }
+            for (i in 1..5) {
+                var zombiesInLane = false
+                for (zombie in zombies) {
+                    if (zombie.lane == i) {
+                        zombiesInLane = true
+                    }
+                }
+                if (zombiesInLane == false) {
+                    for (plant in plants) {
+                        if (plant.lane == i && plant.plantID != 1) {
+                            plant.peashooter?.areZombies = false ?: true
+                        }
+                    }
+                }
+                else {
+                    for (plant in plants) {
+                        if (plant.lane == i) {
+                            plant.peashooter?.areZombies = true ?: true
                         }
                     }
                 }
@@ -213,20 +234,25 @@ open class GameActivity : AppCompatActivity() {
 
             if (gameCounter == 500) {
                 wave = 1
+                waveText.text = "Wave 1"
             }
 
             if (gameCounter == 1500) {
                 wave = 2
+                waveText.text = "Wave 2"
             }
 
             if (gameCounter == 2500) {
                 wave = 3
+                waveText.text = "Wave 3"
             }
             if (gameCounter == 3000) {
                 wave = 4
+                waveText.text = "Wave 4"
             }
             if (gameCounter == 4000) {
                 wave = 15
+                waveText.text = "Wave 5"
             }
 
             if (wave == 1) {

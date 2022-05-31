@@ -10,6 +10,7 @@ class PeashooterPlant(var imageView: ImageView, var x: Int, var y: Int) {
     var playingIdleAnimation = true
     var animationShootCounter = 0
     var animationIdleCounter = 0
+    var areZombies = false
 
     init {
         imageView.setImageResource(R.drawable.peashooter)
@@ -17,7 +18,7 @@ class PeashooterPlant(var imageView: ImageView, var x: Int, var y: Int) {
 
     fun update(time : Int) {
         counter += time
-        if (counter%2000 == 0) {
+        if ((counter%2000 == 0) && (areZombies == true)) {
             shoot()
         }
         if (counter%120 == 0) {

@@ -22,7 +22,7 @@ class Zombie(var imageView: ImageView, var lane: Int, var priority: Int, var hea
             //Log.d("ZombieClass", "Zombie Position: ${imageView.x} and ${imageView.y}")
             eat()
         }
-        if (counter%4 == 0) {
+        if (counter%6 == 0) {
             animate()
         }
     }
