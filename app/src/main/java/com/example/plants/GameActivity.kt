@@ -1,5 +1,6 @@
 package com.example.plants
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
@@ -7,6 +8,8 @@ import android.os.Looper
 import android.provider.SyncStateContract.Helpers.update
 import android.text.TextUtils.indexOf
 import android.util.Log
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -22,7 +25,7 @@ open class GameActivity : AppCompatActivity() {
     }
 
     init {
-        sun = 5000
+        sun = 50
     }
     lateinit var binding: ActivityGameBinding
 
@@ -33,6 +36,9 @@ open class GameActivity : AppCompatActivity() {
 
         val sunDisplayValue = binding.sunDisplayValue
         val sunDisplayValueIcon = binding.sunDisplayValueIcon
+        val gameOverText = binding.GameOverText
+        gameOverText.text = ""
+        //gameOverText.visibility = INVISIBLE
         sunDisplayValue.text = sun.toString()
 
         var purchasePlantSelected = 0
@@ -107,7 +113,7 @@ open class GameActivity : AppCompatActivity() {
             imageView.translationX = (projectile.x * 200f) + 700f
             imageView.translationY = (projectile.y * 235f) + 15f
 
-            imageView.setImageResource(R.drawable.sun)
+            imageView.setImageResource(R.drawable.pea)
 
             binding.GameLayout.addView(imageView)
             projectile.imageView = imageView
@@ -149,12 +155,19 @@ open class GameActivity : AppCompatActivity() {
                 binding.GameLayout.addView(imageView)
 
                 zombieCounter += 1
-                val newZombie = Zombie(imageView, lane, zombieCounter)
+                val newZombie = Zombie(imageView, lane, zombieCounter, ((wave*10) + 100))
                 zombies.add(newZombie)
             }
         }
 
+        @SuppressLint("SetTextI18n")
         fun checkCollisions() {
+            for (zombie in zombies) {
+                if (zombie.imageView.x <= 0) {
+                    //gameOverText.visibility = VISIBLE
+                    gameOverText.text = "Game Over!"
+                }
+            }
             for (plant in plants) {
                 //Log.d("GameActivity", "Top Left Plant Position: ${plant.imageView.x} and ${plant.imageView.y}")
                 for (zombie in zombies) {
@@ -202,12 +215,18 @@ open class GameActivity : AppCompatActivity() {
                 wave = 1
             }
 
-            if (gameCounter == 2000) {
+            if (gameCounter == 1500) {
                 wave = 2
             }
 
-            if (gameCounter == 3500) {
+            if (gameCounter == 2500) {
                 wave = 3
+            }
+            if (gameCounter == 3000) {
+                wave = 4
+            }
+            if (gameCounter == 4000) {
+                wave = 15
             }
 
             if (wave == 1) {
@@ -222,6 +241,16 @@ open class GameActivity : AppCompatActivity() {
             }
             if (wave == 3) {
                 if (gameCounter%125 == 0) {
+                    addZombie((1..5).random())
+                }
+            }
+            if (wave == 4) {
+                if (gameCounter%50 == 0) {
+                    addZombie((1..5).random())
+                }
+            }
+            if (wave == 15) {
+                if (gameCounter%50 == 0) {
                     addZombie((1..5).random())
                 }
             }

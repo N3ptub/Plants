@@ -516,4 +516,16 @@
         app:layout_constraintStart_toStartOf="@+id/background"
         app:layout_constraintTop_toTopOf="@+id/background" />
 
+    <TextView
+        android:id="@+id/GameOverText"
+        android:layout_width="629dp"
+        android:layout_height="145dp"
+        android:layout_marginStart="188dp"
+        android:layout_marginTop="112dp"
+        android:text="Game Over!"
+        android:textColor="#FF0000"
+        android:textSize="96sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
